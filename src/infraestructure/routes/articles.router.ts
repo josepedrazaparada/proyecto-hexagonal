@@ -8,7 +8,7 @@ const articlesRouter = dependencies => {
 
     router.get('/withModifiers', articlesHandler.getAllArticlesWithModifiers);
     router.get('/withoutModifiers', articlesHandler.getAllArticles);
-    router.get('/:id', articlesHandler.getOneArticle);
+    router.get('/oneWithModifiers/:id', articlesHandler.getOneArticle);
 
     return router;
 }
