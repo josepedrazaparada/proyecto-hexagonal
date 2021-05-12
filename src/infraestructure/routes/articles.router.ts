@@ -1,7 +1,8 @@
 import express from 'express';
 import ArticlesHandler from '../../interface/handlers/articles.handler';
+import ArticlesPersistor from '../persistence/Article.perisistence';
 
-const articlesRouter = dependencies => {
+const articlesRouter = (dependencies: { articlesPersistor: ArticlesPersistor }) => {
 
     const articlesHandler = new ArticlesHandler(dependencies.articlesPersistor);
     const router = express.Router();
