@@ -1,6 +1,6 @@
 interface ItemEntity {
     id: number;
-    stock: number
+    name: string;
 }
 
 export default ItemEntity;

@@ -4,9 +4,9 @@ import ArticleRepository from '../repositories/articles.repository';
 import DataBase from '../resources/data.json';
 
 class ArticlePersistence implements ArticleRepository {
-    public async findOne(id: number): Promise<ArticleEntity> {
+    public async findOne(id: number): (Promise<ArticleEntity | null>) {
         let article = DataBase.articles.find((article: ArticleEntity) => article.id === id);
-        return article;
+        return article || null;
     }
     public async findAll(): Promise<Array<ArticleEntity>> {
         let articles = DataBase.articles;

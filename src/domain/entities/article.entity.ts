@@ -2,7 +2,7 @@ import ItemEntity from './item.entity';
 import ModifierGroupEntity from './modifierGroup.entity';
 
 interface ArticleEntity extends ItemEntity {
-    name: string;
+    stock: number;
     description: string;
     price: number;
     urlImage: string;

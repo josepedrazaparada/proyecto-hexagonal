@@ -4,9 +4,9 @@ import DataBase from '../resources/data.json';
 
 class ModifierGroupPersistence implements ModifierGroupsRepository {
     
-    public async findOne(id: number): Promise<ModifierGroupEntity> {
+    public async findOne(id: number): Promise<ModifierGroupEntity | null> {
         let modifierGroup = DataBase.modifierGroups.find((modifier: ModifierGroupEntity) => modifier.id === id);
-        return modifierGroup;
+        return modifierGroup || null;
     }
     public async findAll(): Promise<Array<ModifierGroupEntity>> {
         let modifierGroups = DataBase.modifierGroups;

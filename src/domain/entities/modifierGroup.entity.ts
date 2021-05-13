@@ -1,8 +1,7 @@
+import ItemEntity from './item.entity';
 import ArticleEntity from './article.entity';
 
-interface ModifierGroupEntity {
-    id: number;
-    name: string;
+interface ModifierGroupEntity extends ItemEntity {
     maximun: number;
     minimun: number;
     articles: Array<number> | Array<ArticleEntity>
