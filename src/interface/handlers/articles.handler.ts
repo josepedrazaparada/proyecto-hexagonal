@@ -1,18 +1,19 @@
+import { Request, Response, Next } from 'express';
+import ArticlesRepository from "../../infraestructure/repositories/articles.repository";
 import {
   getAllArticlesWithModifiers,
   getOneArticle,
   getAllArticles,
 } from "../../useCases/getArticles.useCase";
-import ArticlesRepository from "../../infraestructure/repositories/articles.repository";
 
 class ArticlesHandler {
   private articlesRepository: ArticlesRepository;
 
-  constructor(articlesRepository) {
+  constructor(articlesRepository: ArticlesRepository) {
     this.articlesRepository = articlesRepository;
   }
 
-  async getAllArticlesWithModifiers(req, res, next) {
+  async getAllArticlesWithModifiers(req: Request, res: Response, next: Next) {
     try {
       let articles = await getAllArticlesWithModifiers(this.articlesRepository)();
       return res.status(200).send(articles);
@@ -21,7 +22,7 @@ class ArticlesHandler {
       next(error);
     }
   }
-  async getOneArticle(req, res, next) {
+  async getOneArticle(req: Request, res: Response, next: Next) {
     try {
       if (!req.params.id) {
         return res.status(400);
@@ -36,7 +37,7 @@ class ArticlesHandler {
       next(error);
     }
   }
-  async getAllArticles(req, res, next) {
+  async getAllArticles(req: Request, res: Response, next: Next) {
     try {
       let articles = await getAllArticles(this.articlesRepository)();
       return res.status(200).send(articles);

@@ -1,8 +1,8 @@
-import express from 'express';
+import { Router } from 'express';
 import articlesRouter from './articles.router';
 import dependencies from '../../config/dependencies';
 
-const router = express.Router();
+const router : Router = Router();
 
 router.use('/articles', articlesRouter(dependencies));
 

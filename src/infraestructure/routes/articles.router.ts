@@ -1,11 +1,11 @@
-import express from 'express';
+import { Router } from 'express';
 import ArticlesHandler from '../../interface/handlers/articles.handler';
-import ArticlesPersistor from '../persistence/Article.perisistence';
+import ArticlesPersistor from '../persistence/Article.persistence';
 
 const articlesRouter = (dependencies: { articlesPersistor: ArticlesPersistor }) => {
 
     const articlesHandler = new ArticlesHandler(dependencies.articlesPersistor);
-    const router = express.Router();
+    const router : Router = Router();
 
     router.get('/withModifiers', articlesHandler.getAllArticlesWithModifiers);
     router.get('/withoutModifiers', articlesHandler.getAllArticles);

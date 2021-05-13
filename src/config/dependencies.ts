@@ -1,4 +1,4 @@
-import ArticlesPersistor from '../infraestructure/persistence/Article.perisistence';
+import ArticlesPersistor from '../infraestructure/persistence/Article.persistence';
 import ModifierGroupsPersistor from '../infraestructure/persistence/ModifierGroups.persistence';
 
 const dependencies = {
