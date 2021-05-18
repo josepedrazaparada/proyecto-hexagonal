@@ -1,0 +1,9 @@
+enum ErrorTypes {
+    DEFAULT_ERROR = 'DEFAULT_ERROR',
+    INTERNAL_ERROR = 'INTERNAL_ERROR',
+    BAD_PARAMS = 'BAD_PARAMS',
+    UNAUTHORIZED = 'UNAUTHORIZED',
+    NOT_FOUND = 'NOT_FOUND'
+}
+
+export default ErrorTypes;

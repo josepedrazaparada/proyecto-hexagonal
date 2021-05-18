@@ -7,7 +7,9 @@
       "description": "Exquisito combo cuarto de libra",
       "price": 5090,
       "modifierGroups": [10, 20],
-      "urlImage": ""
+      "urlImage": "",
+      "type": "BURGUER",
+      "isSell": true
     },
     {
       "id": 1,
@@ -16,7 +18,9 @@
       "description": "",
       "price": 1050,
       "modifierGroups": [],
-      "urlImage": ""
+      "urlImage": "",
+      "type": "FRIES",
+      "isSell": true
     },
     {
       "id": 2,
@@ -25,7 +29,9 @@
       "description": "",
       "price": 1050,
       "modifierGroups": [],
-      "urlImage": ""
+      "urlImage": "",
+      "type": "FRIES",
+      "isSell": false
     },
     {
       "id": 3,
@@ -34,7 +40,9 @@
       "description": "",
       "price": 990,
       "modifierGroups": [],
-      "urlImage": ""
+      "urlImage": "",
+      "type": "DRINKS",
+      "isSell": true
     },
     {
       "id": 4,
@@ -43,7 +51,9 @@
       "description": "",
       "price": 990,
       "modifierGroups": [],
-      "urlImage": ""
+      "urlImage": "",
+      "type": "DRINKS",
+      "isSell": false
     }
   ],
   "modifierGroups": [

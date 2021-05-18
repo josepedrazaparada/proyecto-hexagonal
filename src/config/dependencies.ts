@@ -4,6 +4,6 @@ import ModifierGroupsPersistor from '../infraestructure/persistence/ModifierGrou
 const dependencies = {
     articlesPersistor: new ArticlesPersistor(),
     modifierGroupsPersistor: new ModifierGroupsPersistor()
-}
+};
 
 export default dependencies;

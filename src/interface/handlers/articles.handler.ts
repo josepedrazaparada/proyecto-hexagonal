@@ -1,48 +1,50 @@
-import { Request, Response, Next } from 'express';
-import ArticlesRepository from "../../infraestructure/repositories/articles.repository";
+import { Request, Response, NextFunction } from 'express';
+import ArticlesRepository from '../../infraestructure/repositories/articles.repository';
 import {
   getAllArticlesWithModifiers,
   getOneArticle,
   getAllArticles,
-} from "../../useCases/getArticles.useCase";
+} from '../../application/useCases/getArticles.useCase';
+import ApplicationError from '../../domain/responses/errors/application.errors';
+import ErrorTypes from '../../domain/enums/errorTypes.enum';
+import ApplicationSuccess from '../../domain/responses/success/application.success';
+import SuccessTypes from '../../domain/enums/successTypes.enum';
 
 class ArticlesHandler {
   private articlesRepository: ArticlesRepository;
-
   constructor(articlesRepository: ArticlesRepository) {
     this.articlesRepository = articlesRepository;
   }
-
-  async getAllArticlesWithModifiers(req: Request, res: Response, next: Next) {
+  
+  getAllArticlesWithModifiers = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      let articles = await getAllArticlesWithModifiers(this.articlesRepository)();
-      return res.status(200).send(articles);
+      const articles = await getAllArticlesWithModifiers(this.articlesRepository)();
+      return next(new ApplicationSuccess(articles, SuccessTypes.SUCCESS));
     } catch (error) {
-      console.log(error);
       next(error);
     }
-  }
-  async getOneArticle(req: Request, res: Response, next: Next) {
+  };
+
+  getOneArticle = async (req: Request, _res: Response, next: NextFunction) => {
     try {
       if (!req.params.id) {
-        return res.status(400);
+        throw new ApplicationError(ErrorTypes.BAD_PARAMS);
       }
-      let article = await getOneArticle(this.articlesRepository)(req.params.id);
+      const article = await getOneArticle(this.articlesRepository)(parseInt(req.params.id, 10));
       if (article) {
-        return res.status(200).send(article);
+        return next(new ApplicationSuccess(article, SuccessTypes.SUCCESS));
       }
-      return res.status(404);
+      throw new ApplicationError(ErrorTypes.NOT_FOUND);
     } catch (error) {
-      console.log(error);
       next(error);
     }
   }
-  async getAllArticles(req: Request, res: Response, next: Next) {
+
+  getAllArticles = async (_req: Request, _res: Response, next: NextFunction) => {
     try {
-      let articles = await getAllArticles(this.articlesRepository)();
-      return res.status(200).send(articles);
+      const articles = await getAllArticles(this.articlesRepository)();
+      return next(new ApplicationSuccess(articles, SuccessTypes.SUCCESS));
     } catch (error) {
-      console.log(error);
       next(error);
     }
   }

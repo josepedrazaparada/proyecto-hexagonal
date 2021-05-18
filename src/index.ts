@@ -1,6 +1,6 @@
-import express from "express";
+import express from 'express';
 import bodyParser from 'body-parser';
-import defaultRouter from './src/infraestructure/routes';
+import defaultRouter from './infraestructure/routes';
 
 const app = express();
 const PORT = 3001;
@@ -8,6 +8,6 @@ const PORT = 3001;
 app.use(bodyParser());
 
 app.listen(PORT, () => {
-  console.log("Corriendo server");
+  console.log('Corriendo server ' + PORT);
   app.use('/app', defaultRouter);
 });
